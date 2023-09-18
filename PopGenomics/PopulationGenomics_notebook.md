@@ -38,7 +38,7 @@
 - After discussing the initial FastQC results, we saw good quality sequence data for most of the read length
 - The initial 5 bp or so had more variable base frequencies, and the very end of the reads had slightly lower Q-scores
 - Based on this, we set up an analysis to trim the reads using the 'fastp' program
-- We ran the bas script 'fastp.sh' for this
+- We ran the bam script 'fastp.sh' for this
 - We looked at the html files produced by 'fastp' and compared pre- and post-trimming -- things looked good!
 - We ended the day setting up our read mapping of the trimmed and cleaned reads using 'bwa'
 
@@ -50,4 +50,4 @@
 
 - Created lab notebook, to be used every day to document the processes taking place in class
 - Processed our mapping files using samtools and sambamba
-- Updated VIM scripts (did not finish, will do Wednesday)
+- Updated VIM scripts 'bam_stats.sh' and 'process_bam.sh' (did not finish process_bam.sh, will do Wednesday)
