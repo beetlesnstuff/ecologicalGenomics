@@ -48,4 +48,6 @@
 
 ### Entry 3: 2023-09-18.
 
-- Created lab notebook, to be used every class to document what is going on
+- Created lab notebook, to be used every day to document the processes taking place in class
+- Processed our mapping files using samtools and sambamba
+- Updated VIM scripts (did not finish, will do Wednesday)
