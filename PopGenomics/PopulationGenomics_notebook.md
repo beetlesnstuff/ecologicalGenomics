@@ -6,7 +6,7 @@
 
 
 ### Start Date: 9.11.2023
-### End Date: 
+### End Date: TBD
 ### Project Descriptions:   This notebook will document my workflow on the bioinformatics of the Population Genomics section of the Fall 2023 Ecological Genomics course.
 
 
@@ -48,3 +48,4 @@
 
 ### Entry 3: 2023-09-18.
 
+- Created lab notebook, to be used every class to document what is going on
