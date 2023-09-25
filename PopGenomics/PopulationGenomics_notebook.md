@@ -51,3 +51,19 @@
 - Created lab notebook, to be used every day to document the processes taking place in class
 - Processed our mapping files using samtools and sambamba
 - Updated VIM scripts 'bam_stats.sh' and 'process_bam.sh' (did not finish process_bam.sh, will do Wednesday)
+------    
+<div id='id-section4'/>  
+
+### Entry 4: 2023-09-20.
+
+-Calculated mapping stats
+-Created ANGSD
+
+------    
+<div id='id-section5'/>  
+
+### Entry 5: 2023-09-25.
+
+-Calculated SFS and diversity stats
+-Edited and adjusted ANGSD, created a new vim script 'ANGSD_doTheta.sh'
+
