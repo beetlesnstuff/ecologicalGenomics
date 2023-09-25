@@ -68,4 +68,5 @@
 -Edited and adjusted ANGSD, created a new vim script 'ANGSD_doTheta.sh'
 -Applied new files to filezilla
 -Created R Script to summarize diversity stats
+-Added data to 'EcologicalGenomics_ANGSD_Fall2023'
 
