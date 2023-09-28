@@ -70,3 +70,13 @@
 -Created R Script to summarize diversity stats
 -Added data to 'EcologicalGenomics_ANGSD_Fall2023'
 
+------    
+<div id='id-section6'/>  
+
+### Entry 6: 2023-09-27.
+
+-Created new VIM script 'ANGSD_Fst.sh', this script estimates Fst between the red spruce pop 2103 and black spruce:
+-Calculated NeW and NeP in 'EcologicalGenomics_ANGSD_Fall2023'
+-Created new VIM script 'ANGSD_allRS_poly.beagle.gz'
+
+
