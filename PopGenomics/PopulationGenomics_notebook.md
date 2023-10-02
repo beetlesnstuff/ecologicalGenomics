@@ -79,4 +79,13 @@
 -Calculated NeW and NeP in 'EcologicalGenomics_ANGSD_Fall2023'
 -Created new VIM script 'ANGSD_allRS_poly.beagle.gz'
 
+------    
+<div id='id-section7'/>  
+
+### Entry 7: 2023-10-02.
+
+-Walked through results of r script 'Tutorial.Script.9.27.23'
+-Adjusted mutation rates in document 'EcologicalGenomics_ANGSD_Fall2023' and added FST scores
+
+
 
