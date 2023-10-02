@@ -89,5 +89,5 @@
 -Wrote 'pcANGSD_selection.sh' which will use pcANGSD to test for selection on outlier loci involved in population structure, as represented by the genetic PCA axes
 -Created files 'allRS_poly.sites, allRS_poly.weights.npy, allRS_poly.selection.npy' with descriptions in Day 10 tutorial pt 1
 -Created R Script 'Tutorial_Script_1_10.02.23'
-
+-PlantGenie created list with candidate genes
 
