@@ -86,6 +86,7 @@
 
 -Walked through results of r script 'Tutorial.Script.9.27.23'
 -Adjusted mutation rates in document 'EcologicalGenomics_ANGSD_Fall2023' and added FST scores
-
+-Wrote 'pcANGSD_selection.sh' which will use pcANGSD to test for selection on outlier loci involved in population structure, as represented by the genetic PCA axes
+-Created files 'allRS_poly.sites, allRS_poly.weights.npy, allRS_poly.selection.npy' with descriptions in Day 10 tutorial pt 1
 
 
