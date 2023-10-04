@@ -91,3 +91,9 @@
 -Created R Script 'Tutorial_Script_1_10.02.23'
 -PlantGenie created list with candidate genes
 
+------    
+<div id='id-section8'/>  
+
+### Entry 8: 2023-10-04.
+
+-Revisited pcANGSD selection scan
