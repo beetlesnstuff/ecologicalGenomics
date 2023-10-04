@@ -19,6 +19,15 @@ dim(p)
 p_filtered = p[which(p$kept_sites==1),]
 dim(p_filtered)
 
+cutoff=1e-3
+
+outliers_PC1 <- p_filtered[which(pval$p_PC1<cutoff),c("chromo","position")]
+outliers_PC2 <- p_filtered[which(pval$p_PC2<cutoff),c("chromo","position")]
+
+dim(outliers_PC1)[1]
+dim(outliers_PC2)[1]
+
+
 # How many sites got filtered out when testing for selection? Why?
 
 ## make manhattan plot
@@ -54,6 +63,28 @@ length(unique(outlier_contigs$chromo))
 
 write.table(unique(outlier_contigs$chromo), 
             "allRS_poly_PC1_outlier_contigs.txt",
+            sep="\t",
+            quote=F,
+            row.names=F,
+            col.names=F)
+
+# write them out to a file
+write.table(outliers_PC1,
+            "allRS_poly_outliers_PC1.txt", 
+            sep=":",
+            quote=F,
+            row.names=F,
+            col.names=F)
+
+COV <- as.matrix(read.table("allRS_poly.cov"))
+
+PCA <- eigen(COV)
+
+data=as.data.frame(PCA$vectors)
+data=data[,c(1:2)] # the second number here is the number of PC axes you want to keep
+
+write.table(data,
+            "allRS_poly_genPC1_2.txt",
             sep="\t",
             quote=F,
             row.names=F,
