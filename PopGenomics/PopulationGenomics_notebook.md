@@ -97,3 +97,6 @@
 ### Entry 8: 2023-10-04.
 
 -Revisited pcANGSD selection scan
+-Created PC plot and found most associated bioclim variables
+-Created vim script 'ANGSD_GEA_bio.sh' to run GEA analysis
+
