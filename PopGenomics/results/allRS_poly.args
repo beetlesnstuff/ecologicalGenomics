@@ -1,0 +1,9 @@
+PCAngsd v1.11
+Time: 06/10/2023 21:24:08
+Directory: /data/users/a/k/akissone/myscripts
+Options:
+	-beagle /netfiles/ecogen/PopulationGenomics/ANGSD/allRS_poly.beagle.gz
+	-n_eig 2
+	-out /users/a/k/akissone/myresults/ANGSD/allRS_poly
+	-admix
+	-admix_alpha 50.0
