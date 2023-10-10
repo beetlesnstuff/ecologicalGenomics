@@ -95,7 +95,7 @@ s<-npyLoad("allRS_poly.selection.npy")
 # convert test statistic to p-value
 pval <- as.data.frame(1-pchisq(s,1))
 names(pval) = "p_PC1"
-
+  
 ## read positions
 p <- read.table("allRS_poly_mafs.sites",sep="\t",header=T, stringsAsFactors=T)
 dim(p)
@@ -130,6 +130,7 @@ outlier_contigs <- p_filtered[which(pval<cutoff),c("chromo","position")]
 outlier_contigs
 
 # how many outlier loci < the cutoff?
+
 dim(outlier_contigs)[1]
 
 # how many unique contigs harbor outlier loci?
@@ -138,6 +139,14 @@ length(unique(outlier_contigs$chromo))
 write.table(unique(outlier_contigs$chromo),
             "allRS_poly_PC1_outlier_contigs.txt", 
             sep="\t",
+            quote=F,
+            row.names=F,
+            col.names=F)
+
+
+write.table(outliers_PC1,
+            "allRS_poly_outliers_PC1.txt", 
+            sep=":",
             quote=F,
             row.names=F,
             col.names=F)
@@ -216,3 +225,4 @@ write.table(scale(angsd_coords_clim["bio10"]),
             quote=F,
             row.names = F,
             col.names=F)
+

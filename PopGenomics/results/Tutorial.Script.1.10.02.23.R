@@ -55,8 +55,12 @@ outlier_contigs <- p_filtered[which(pval$p_PC1<cutoff),c("chromo","position")]
 
 outlier_contig <- outlier_contigs[which(outlier_contigs$position>0),]
 
+
+
 # how many outlier loci < the cutoff?
 dim(outlier_contigs)[1]
+
+
 
 # how many unique contigs harbor outlier loci?
 length(unique(outlier_contigs$chromo))
@@ -69,6 +73,13 @@ write.table(unique(outlier_contigs$chromo),
             col.names=F)
 
 # write them out to a file
+write.table(outliers_PC1,
+            "allRS_poly_outliers_PC1.txt", 
+            sep=":",
+            quote=F,
+            row.names=F,
+            col.names=F)
+
 write.table(outliers_PC1,
             "allRS_poly_outliers_PC1.txt", 
             sep=":",
@@ -89,3 +100,52 @@ write.table(data,
             quote=F,
             row.names=F,
             col.names=F)
+
+
+###
+
+# How many sites got filtered out when testing for selection? Why?
+
+## make manhattan plot
+plot(-log10(pval$p_PC2),
+     col=p_filtered$chromo,
+     xlab="Position",
+     ylab="-log10(p-value)",
+     main="Selection outliers: pcANGSD e=2 (K3)")
+
+
+# We can zoom in if there's something interesting near a position...
+
+plot(-log10(pval$p_PC2[2e05:2.01e05]),
+     col=p_filtered$chromo, 
+     xlab="Position", 
+     ylab="-log10(p-value)", 
+     main="Selection outliers: pcANGSD e=2 (K3)")
+
+# get the contig with the lowest p-value for selection
+sel_contig <- p_filtered[which(pval==min(pval$p_PC2)),c("chromo","position")]
+sel_contig
+
+# get all the outliers with p-values below some cutoff
+cutoff=1e-4   # equals a 1 in 5,000 probability
+outlier_contig <- p_filtered[which(pval$p_PC2<cutoff),c("chromo","position")]
+outlier_contig
+
+outlier_contig[2000-2500, 1:2]
+
+dim(outlier_contig[which(outlier_contig$position>0),])
+
+outlier_contig <-(outlier_contig[which(outlier_contig$position>0),])
+dim(outlier_contig)  
+
+# how many unique contigs harbor outlier loci?
+length(unique(outlier_contig$chromo))
+
+write.table(unique(outlier_contig$chromo),
+            "allRS_poly_PC2_outlier_contigs.txt", 
+            sep="\t",
+            quote=F,
+            row.names=F,
+            col.names=F)
+# how many outlier loci < the cutoff?
+dim(outlier_contig)[1]
