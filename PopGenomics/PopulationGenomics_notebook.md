@@ -100,3 +100,11 @@
 -Created PC plot and found most associated bioclim variables
 -Created vim script 'ANGSD_GEA_bio.sh' to run GEA analysis
 
+------    
+<div id='id-section9'/>  
+
+### Entry 9: 2023-10-11.
+
+-Came up with questions to ask: Effects of env. on levels of gene expression | Signature of adaptation/physiological adaptation (G.E.) in F2, F4, F11 | Statistical test for interaction between environment and generation | Synergy/unique resposne to the combined treatment
+
+
