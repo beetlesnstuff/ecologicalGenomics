@@ -452,6 +452,7 @@ degs_F0_OAvAM <- row.names(res_F0_OAvAM[res_F0_OAvAM$padj < 0.05,])
 # For OWA vs AM
 res_F0_OWAvAM <- results(dds_sub, name="treatment_OWA_vs_AM", alpha=0.05)
 res_F0_OWAvAM <- res_F0_OWAvAM[order(res_F0_OWAvAM$padj),]
+#could further subset this based on the "stat" value to split by upregulated and downregulated (negative)
 head(res_F0_OWAvAM)
 
 summary(res_F0_OWAvAM)
