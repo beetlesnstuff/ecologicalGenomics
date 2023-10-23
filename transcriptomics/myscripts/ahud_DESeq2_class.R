@@ -12,14 +12,16 @@ library(ggplot2)
 library(scales)
 library(ggpubr)
 library(wesanderson)
-library(vsn)  ### First: BiocManager::install("vsn") AND BiocManager::install("hexbin")
+BiocManager::install("vsn") 
+BiocManager::install("hexbin")
+### First: BiocManager::install("vsn") AND BiocManager::install("hexbin")
 
 #############################
 ### Import our data
 ############################
 
 # Import the counts matrix
-countsTable <- read.table("/Users/alexanderkissonergis/Documents/GitHub/ecologicalGenomics/transcriptomics/myresults/salmon.isoform.counts.matrix", header=TRUE, row.names=1)
+countsTable <- read.table("salmon.isoform.counts.matrix.filteredAssembly", header=TRUE, row.names=1)
 head(countsTable)
 dim(countsTable)
 
@@ -48,7 +50,7 @@ median(rowSums(countsTableRound)) # 117
 
 apply(countsTableRound,2,mean) # 2 in the apply function does the action across columns
 apply(countsTableRound,1,mean) # 1 in the apply function does the action across rows
-hist(apply(countsTableRound,1,mean),xlim=c(0,1000), ylim=c(0,300000),breaks=10000)
+hist(apply(countsTableRound,1,mean),xlim=c(0,1000), ylim=c(0,50000),breaks=10000)
 
 #############################
 ### Start working with DESeq
@@ -64,9 +66,9 @@ dim(dds)
 # Filter out genes with too few reads - remove all genes with counts < 15 in more than 75% of samples, so ~28)
 ## suggested by WGCNA on RNAseq FAQ
 
-dds <- dds[rowSums(counts(dds) >= 30) >= 28,]
+dds <- dds[rowSums(counts(dds) >= 15) >= 28,]
 nrow(dds) 
-# 41348
+# 25260, that have at least 15 reads (a.k.a counts) in 75% of the samples
 
 # Run the DESeq model to test for differential gene expression
 dds <- DESeq(dds)
