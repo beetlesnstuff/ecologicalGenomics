@@ -461,31 +461,31 @@ degs_F0_OWAvAM <- row.names(res_F0_OWAvAM[res_F0_OWAvAM$padj < 0.05,])
 library(eulerr)
 
 # Total
-length(degs_F0_OAvAM)  # 520
-length(degs_F0_OWvAM)  # 4841 
-length(degs_F0_OWAvAM)  # 3742
+length(degs_F0_OAvAM)  # 602
+length(degs_F0_OWvAM)  # 5517 
+length(degs_F0_OWAvAM)  # 3918
 
 # Intersections
-length(intersect(degs_F0_OAvAM,degs_F0_OWvAM))  # 387
-length(intersect(degs_F0_OAvAM,degs_F0_OWAvAM))  # 340
-length(intersect(degs_F0_OWAvAM,degs_F0_OWvAM))  # 2585
+length(intersect(degs_F0_OAvAM,degs_F0_OWvAM))  # 444
+length(intersect(degs_F0_OAvAM,degs_F0_OWAvAM))  # 380
+length(intersect(degs_F0_OWAvAM,degs_F0_OWvAM))  # 2743
 
 intWA <- intersect(degs_F0_OAvAM,degs_F0_OWvAM)
-length(intersect(degs_F0_OWAvAM,intWA)) # 308
+length(intersect(degs_F0_OWAvAM,intWA)) # 338
 
 # Number unique
 
-520-387-340+308 # 101 OA
-4841-387-2585+308 # 2177 OW 
-3742-340-2585+308 # 1125 OWA
+602-444-380+338 # 116 OA
+5517-444-2743+338 # 2668 OW 
+3918-380-2743+338 # 1133 OWA
 
-387-308 # 79 OA & OW
-340-308 # 32 OA & OWA
-2585-308 # 2277 OWA & OW
+444-338 # 106 OA & OW
+380-338 # 42 OA & OWA
+2743-338 # 2405 OWA & OW
 
 
 # Note that the names are important and have to be specific to line up the diagram
-fit1 <- euler(c("OA" = 101, "OW" = 2177, "OWA" = 1125, "OA&OW" = 79, "OA&OWA" = 32, "OW&OWA" = 2277, "OA&OW&OWA" = 308))
+fit1 <- euler(c("OA" = 116, "OW" = 2688, "OWA" = 1133, "OA&OW" = 106, "OA&OWA" = 42, "OW&OWA" = 2405, "OA&OW&OWA" = 338))
 
 
 plot(fit1,  lty = 1:3, quantities = TRUE)
@@ -497,6 +497,6 @@ plot(fit1, quantities = TRUE, fill = "transparent",
 
 
 #cross check
-2177+2277+308+79 # 4841, total OW
-1125+2277+308+32 # 3742, total OWA
-101+32+79+308    # 520, total OA
+2688+2405+338+106 # 5537, total OW
+1133+2405+338+42 # 3918, total OWA
+116+42+106+338    # 602, total OA
