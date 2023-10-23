@@ -486,7 +486,7 @@ length(intersect(degs_F0_OWAvAM,intWA)) # 338
 
 
 # Note that the names are important and have to be specific to line up the diagram
-fit1 <- euler(c("OA" = 116, "OW" = 2688, "OWA" = 1133, "OA&OW" = 106, "OA&OWA" = 42, "OW&OWA" = 2405, "OA&OW&OWA" = 338))
+fit1 <- euler(c("OA" = 116, "OW" = 2668, "OWA" = 1133, "OA&OW" = 106, "OA&OWA" = 42, "OW&OWA" = 2405, "OA&OW&OWA" = 338))
 
 
 plot(fit1,  lty = 1:3, quantities = TRUE)
@@ -498,6 +498,6 @@ plot(fit1, quantities = TRUE, fill = "transparent",
 
 
 #cross check
-2688+2405+338+106 # 5537, total OW
+2668+2405+338+106 # 5517, total OW
 1133+2405+338+42 # 3918, total OWA
 116+42+106+338    # 602, total OA
