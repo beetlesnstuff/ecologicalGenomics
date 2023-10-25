@@ -75,6 +75,9 @@
 
 ### Entry 6: 2023-10-25.
 
+-Processing our data
+-Imported the count matrix and meta data using DESeq2
+-Found outliers and normalized, also using DESeq2
 
 ------    
 <div id='id-section7'/>  
