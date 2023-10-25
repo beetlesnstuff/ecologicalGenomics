@@ -501,3 +501,31 @@ plot(fit1, quantities = TRUE, fill = "transparent",
 2668+2405+338+106 # 5517, total OW
 1133+2405+338+42 # 3918, total OWA
 116+42+106+338    # 602, total OA
+
+####################################
+# Work for 10.25.23
+####################################
+
+# Load the package
+#install.packages("WGCNA")
+#if (!require("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
+
+#BiocManager::install("impute")
+
+library(WGCNA);
+# The following setting is important, do not omit.
+options(stringsAsFactors = FALSE);
+
+library(DESeq2)
+library(ggplot2)
+library(tidyverse)
+library(CorLevelPlot) 
+library(gridExtra)
+library(Rmisc) 
+
+#install.packages("remotes")
+#remotes::install_github("kevinblighe/CorLevelPlot")
+
+
+
