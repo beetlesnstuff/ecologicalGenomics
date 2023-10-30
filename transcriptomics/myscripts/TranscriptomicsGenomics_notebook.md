@@ -14,14 +14,14 @@
 
 
 # Table of Contents:   
-* [Entry 1: 2023-09-11](#id-section1)
-* [Entry 2: 2023-09-13](#id-section2)
-* [Entry 3: 2023-09-18](#id-section3)
-* [Entry 4: 2023-09-20](#id-section4)
-* [Entry 5: 2023-09-25](#id-section5)
-* [Entry 6: 2023-09-27](#id-section6)
-* [Entry 7: 2023-10-02](#id-section7)
-* [Entry 8: 2023-10-04](#id-section8)
+* [Entry 1: 2023-10-09](#id-section1)
+* [Entry 2: 2023-10-11](#id-section2)
+* [Entry 3: 2023-10-16](#id-section3)
+* [Entry 4: 2023-10-18](#id-section4)
+* [Entry 5: 2023-10-23](#id-section5)
+* [Entry 6: 2023-10-25](#id-section6)
+* [Entry 7: 2023-10-30](#id-section7)
+* [Entry 8: 2023-11-01](#id-section8)
 
 
 
@@ -62,7 +62,7 @@
 ------    
 <div id='id-section5'/>  
 
-### Entry 5: 2023-09-25.
+### Entry 5: 2023-10-23.
 
 -Ran through a full day of coding to use DESeq2 
 -Built PCA's
@@ -82,13 +82,13 @@
 ------    
 <div id='id-section7'/>  
 
-### Entry 7: 2023-10-02.
+### Entry 7: 2023-10-30.
 
-
+- Continue to work with WGCNA
 ------    
 <div id='id-section8'/>  
 
-### Entry 8: 2023-10-04.
+### Entry 8: 2023-11-01.
 
 
 
