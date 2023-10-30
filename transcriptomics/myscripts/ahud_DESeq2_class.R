@@ -765,7 +765,7 @@ hubs
 d <-plotCounts(dds, gene="TRINITY_DN11845_c0_g1::TRINITY_DN11845_c0_g1_i9::g.36434::m.36434", intgroup = (c("treatment","Generation")), returnData=TRUE)
 d_summary <- summarySE(d, measurevar = "count", groupvars=c("Generation","treatment"))
 
-ggplot(d_summary, aes(x=Generation, y=count, color=treatment, fill = treatment, shape = treatment)) +
+ggplot(d_summary, aes(x=as.factor(Generation), y=count, color=treatment, fill = treatment, shape = treatment)) +
   geom_point(size=5, stroke = 1.5 ) +
   geom_errorbar(aes(ymin=count-se, ymax=count+se), width=.15) +
   geom_line(aes(color=treatment, group=treatment, linetype = treatment)) +
@@ -791,3 +791,26 @@ module.membership.measure.pvals <- corPvalueStudent(module.membership.measure, n
 
 
 module.membership.measure.pvals[1:10,1:10]
+
+# Make a heat map of gene expressions within modules.
+# Use the norm.counts matrix, subset based on module membership
+t_norm.counts <- norm.counts %>% t() %>% as.data.frame()
+
+# purple module
+purple_transcripts <- module.gene.mapping %>% 
+  filter(`bwnet$colors` == 'purple') %>% 
+  rownames()
+
+t_norm.counts_purple <- t_norm.counts %>% 
+  filter(row.names(t_norm.counts) %in% purple_transcripts)
+
+t_norm.counts_purple <- t_norm.counts_purple - rowMeans(t_norm.counts_purple)
+df <- as.data.frame(colData(dds)[,c("eneration","treatment")])
+
+#blue to purple color scheme
+paletteLength <- 50
+myColor <- colorRampPalette(c("dodgerblue", "black", "yellow"))(paletteLength)
+myBreaks <- c(seq(min(t_norm.counts_purple), 0, length.out=ceiling(paletteLength/2) + 1), 
+              seq(max(t_norm.counts_purple)/paletteLength, max(t_norm.counts_purple), length.out=floor(paletteLength/2)))
+pheatmap(t_norm.counts_purple, color = myColor, breaks = myBreaks,
+         show_colnames = FALSE, show_rownames = FALSE, annotation_col = df, main = "purple")
