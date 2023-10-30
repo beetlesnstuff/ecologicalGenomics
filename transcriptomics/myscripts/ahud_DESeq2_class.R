@@ -693,8 +693,8 @@ plotDendroAndColors(bwnet$dendrograms[[1]], cbind(bwnet$unmergedColors, bwnet$co
 # with higher soft power, more genes fall into the grey module
 
 # 6A. Relate modules to traits --------------------------------------------------
-# module trait associations
-
+# module trait associations 
+#do any of these gene expression patters match 
 traits <- sample_metadata[, c(5,8,11,14,17)]
 
 
@@ -705,7 +705,7 @@ nGenes <- ncol(norm.counts)
 
 module.trait.corr <- cor(module_eigengenes, traits, use = 'p')
 module.trait.corr.pvals <- corPvalueStudent(module.trait.corr, nSamples)
-
+#correlate p-values 
 
 
 # visualize module-trait association as a heatmap
