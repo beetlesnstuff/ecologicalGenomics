@@ -809,8 +809,33 @@ df <- as.data.frame(colData(dds)[,c("eneration","treatment")])
 
 #blue to purple color scheme
 paletteLength <- 50
-myColor <- colorRampPalette(c("dodgerblue", "black", "yellow"))(paletteLength)
+myColor <- colorRampPalette(c("dodgerblue", "white", "yellow"))(paletteLength)
 myBreaks <- c(seq(min(t_norm.counts_purple), 0, length.out=ceiling(paletteLength/2) + 1), 
               seq(max(t_norm.counts_purple)/paletteLength, max(t_norm.counts_purple), length.out=floor(paletteLength/2)))
 pheatmap(t_norm.counts_purple, color = myColor, breaks = myBreaks,
          show_colnames = FALSE, show_rownames = FALSE, annotation_col = df, main = "purple")
+
+#lots of darkness, doesnt appear to be clustering by treatment or generation strongly, could be lower expression in many of the genes with a few groups with higher expression
+
+# Make a heat map of gene expressions within modules.
+# Use the norm.counts matrix, subset based on module membership
+t_norm.counts <- norm.counts %>% t() %>% as.data.frame()
+
+# Yellow module
+yellow_transcripts <- module.gene.mapping %>% 
+  filter(`bwnet$colors` == 'yellow') %>% 
+  rownames()
+
+t_norm.counts_yellow <- t_norm.counts %>% 
+  filter(row.names(t_norm.counts) %in% yellow_transcripts)
+
+t_norm.counts_yellow <- t_norm.counts_yellow - rowMeans(t_norm.counts_yellow)
+df <- as.data.frame(colData(dds)[,c("eneration","treatment")])
+
+#blue to yellow color scheme
+paletteLength <- 50
+myColor <- colorRampPalette(c("dodgerblue", "white", "yellow"))(paletteLength)
+myBreaks <- c(seq(min(t_norm.counts_yellow), 0, length.out=ceiling(paletteLength/2) + 1), 
+              seq(max(t_norm.counts_yellow)/paletteLength, max(t_norm.counts_yellow), length.out=floor(paletteLength/2)))
+pheatmap(t_norm.counts_yellow, color = myColor, breaks = myBreaks,
+         show_colnames = FALSE, show_rownames = FALSE, annotation_col = df, main = "Yellow")
