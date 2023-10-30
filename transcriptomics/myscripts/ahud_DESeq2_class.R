@@ -709,6 +709,7 @@ module.trait.corr.pvals <- corPvalueStudent(module.trait.corr, nSamples)
 
 
 # visualize module-trait association as a heatmap
+#outgroup is MEgrey
 
 heatmap.data <- merge(module_eigengenes, traits, by = 'row.names')
 
@@ -752,3 +753,41 @@ ggplot(MEyellow_summary, aes(x=as.factor(Generation), y=MEyellow, color=treatmen
   theme(panel.border = element_rect(color = "black", fill = NA, size = 4))+
   theme(text = element_text(size = 20)) +
   theme(panel.grid.minor.y = element_blank(), legend.position = "none", plot.margin = margin(0,6,0,6))
+
+# 6B. Intramodular analysis: Identifying driver genes ---------------
+
+# Get top hub genes (genes with highest connectivity in the network)
+hubs  <-  chooseTopHubInEachModule(norm.counts, bwnet$colors, type = "signed", omitColors = "")
+hubs
+
+### Plot Individual genes  to check! ### 
+
+d <-plotCounts(dds, gene="TRINITY_DN11845_c0_g1::TRINITY_DN11845_c0_g1_i9::g.36434::m.36434", intgroup = (c("treatment","Generation")), returnData=TRUE)
+d_summary <- summarySE(d, measurevar = "count", groupvars=c("Generation","treatment"))
+
+ggplot(d_summary, aes(x=Generation, y=count, color=treatment, fill = treatment, shape = treatment)) +
+  geom_point(size=5, stroke = 1.5 ) +
+  geom_errorbar(aes(ymin=count-se, ymax=count+se), width=.15) +
+  geom_line(aes(color=treatment, group=treatment, linetype = treatment)) +
+  scale_color_manual(values = c('#6699CC',"#F2AD00","#00A08A", "#CC3333")) +
+  scale_shape_manual(values=c(21,22,23,24), labels = c("Ambient", "Acidification","Warming", "OWA"))+
+  scale_fill_manual(values=c('#6699CC',"#F2AD00","#00A08A", "#CC3333"), labels = c("Ambient", "Acidification","Warming", "OWA"))+
+  xlab("Generation") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(panel.border = element_rect(color = "black", fill = NA, size = 4))+
+  theme(text = element_text(size = 20)) +
+  theme(panel.grid.minor.y = element_blank(), legend.position = "none", plot.margin = margin(0,6,0,6))
+
+
+
+# Calculate the module membership and the associated p-values
+
+# The module membership/intramodular connectivity is calculated as the correlation of the eigengene and the gene expression profile. 
+# This quantifies the similarity of all genes on the array to every module.
+
+module.membership.measure <- cor(module_eigengenes, norm.counts, use = 'p')
+module.membership.measure.pvals <- corPvalueStudent(module.membership.measure, nSamples)
+
+
+module.membership.measure.pvals[1:10,1:10]
