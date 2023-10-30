@@ -691,3 +691,64 @@ plotDendroAndColors(bwnet$dendrograms[[1]], cbind(bwnet$unmergedColors, bwnet$co
 
 # grey module = all genes that doesn't fall into other modules were assigned to the grey module
 # with higher soft power, more genes fall into the grey module
+
+# 6A. Relate modules to traits --------------------------------------------------
+# module trait associations
+
+traits <- sample_metadata[, c(5,8,11,14,17)]
+
+
+# Define numbers of genes and samples
+nSamples <- nrow(norm.counts)
+nGenes <- ncol(norm.counts)
+
+
+module.trait.corr <- cor(module_eigengenes, traits, use = 'p')
+module.trait.corr.pvals <- corPvalueStudent(module.trait.corr, nSamples)
+
+
+
+# visualize module-trait association as a heatmap
+
+heatmap.data <- merge(module_eigengenes, traits, by = 'row.names')
+
+head(heatmap.data)
+
+heatmap.data <- heatmap.data %>% 
+  column_to_rownames(var = 'Row.names')
+
+
+names(heatmap.data)
+
+CorLevelPlot(heatmap.data,
+             x = names(heatmap.data)[12:16],
+             y = names(heatmap.data)[1:11],
+             col = c("blue1", "skyblue", "white", "pink", "red"))
+
+
+
+module.gene.mapping <- as.data.frame(bwnet$colors) # assigns module membership to each gene
+module.gene.mapping %>% 
+  filter(`bwnet$colors` == 'yellow') %>% 
+  rownames()
+
+groups <- sample_metadata[,c(3,1)]
+module_eigengene.metadata <- merge(groups, heatmap.data, by = 'row.names')
+
+#Create a summary data frame of a particular module eigengene information
+MEyellow_summary <- summarySE(module_eigengene.metadata, measurevar="MEyellow", groupvars=c("Generation","treatment"))
+
+#Plot a line interaction plot of a particular module eigengene
+ggplot(MEyellow_summary, aes(x=as.factor(Generation), y=MEyellow, color=treatment, fill = treatment, shape = treatment)) +
+  geom_point(size=5, stroke = 1.5 ) +
+  geom_errorbar(aes(ymin=MEyellow-se, ymax=MEyellow+se), width=.15) +
+  geom_line(aes(color=treatment, group=treatment, linetype = treatment)) +
+  scale_color_manual(values = c('#6699CC',"#F2AD00","#00A08A", "#CC3333")) +
+  scale_shape_manual(values=c(21,22,23,24), labels = c("Ambient", "Acidification","Warming", "OWA"))+
+  scale_fill_manual(values=c('#6699CC',"#F2AD00","#00A08A", "#CC3333"), labels = c("Ambient", "Acidification","Warming", "OWA"))+
+  xlab("Generation") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(panel.border = element_rect(color = "black", fill = NA, size = 4))+
+  theme(text = element_text(size = 20)) +
+  theme(panel.grid.minor.y = element_blank(), legend.position = "none", plot.margin = margin(0,6,0,6))
