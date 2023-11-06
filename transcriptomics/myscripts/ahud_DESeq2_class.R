@@ -1,9 +1,9 @@
 setwd("/Users/alexanderkissonergis/Documents/GitHub/ecologicalGenomics/transcriptomics/myresults/")
 
-if (!require("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
+#if (!require("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
 
-BiocManager::install("DESeq2")
+#BiocManager::install("DESeq2")
 
 library(DESeq2)
 library(dplyr)
@@ -12,8 +12,8 @@ library(ggplot2)
 library(scales)
 library(ggpubr)
 library(wesanderson)
-BiocManager::install("vsn") 
-BiocManager::install("hexbin")
+#BiocManager::install("vsn") 
+#BiocManager::install("hexbin")
 ### First: BiocManager::install("vsn") AND BiocManager::install("hexbin")
 
 #############################
@@ -620,6 +620,8 @@ sft <- pickSoftThreshold(norm.counts,
 
 
 sft.data <- sft$fitIndices
+
+?pickSoftThreshold
 
 # visualization to pick power
 
