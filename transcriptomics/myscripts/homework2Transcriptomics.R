@@ -147,11 +147,13 @@ bwnet <- blockwiseModules(norm.counts,
                           minModuleSize = 30, 
                           reassignThreshold=0,
                           TOMType = "signed",
-                          power = soft_power,
+                          power = 20,
                           mergeCutHeight = 0.25,
                           numericLabels = F,
                           randomSeed = 1234,
                           verbose = 3)
+
+saveRDS(bwnet, file = "bwnet20.rds")
 
 # TOMtype (Topological Overlap Matrix type) parameter - unsigned - doesn't consider positive/negative co-expression
 # signed - when you want to consider the direction of co-expression interaction, e.g., activating or inhibiting
