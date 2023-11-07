@@ -85,12 +85,13 @@
 ### Entry 7: 2023-10-30.
 
 - Continue to work with WGCNA
+
 ------    
 <div id='id-section8'/>  
 
 ### Entry 8: 2023-11-01.
 
-
+- I forgot my laptop:(
 
 
 
