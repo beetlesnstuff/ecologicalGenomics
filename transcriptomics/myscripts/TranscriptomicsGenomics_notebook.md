@@ -6,7 +6,7 @@
 
 
 ### Start Date: 10.09.2023
-### End Date: 
+### End Date: 11.07.2023
 ### Project Descriptions:   This notebook will document my workflow on the bioinformatics of the Transcriptomics section of the Fall 2023 Ecological Genomics course.
 
 
@@ -92,6 +92,7 @@
 ### Entry 8: 2023-11-01.
 
 - I forgot my laptop:(
+- Final code for treatment analysis
 
 
 

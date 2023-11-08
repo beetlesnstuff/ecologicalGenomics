@@ -686,16 +686,19 @@ cor <- WGCNA::cor # use the 'cor' function from the WGCNA package
 #cor <- temp_cor
 
 # 5. Module Eigengenes ---------------------------------------------------------
-module_eigengenes <- bwnet22$MEs
+
+module_eigengenes <- bwnet7$MEs
 
 head(module_eigengenes)
 
 
 # get number of genes for each module
+table(bwnet7$colors)
+table(bwnet9$colors)
 table(bwnet22$colors)
 
 # Plot the dendrogram and the module colors before and after merging underneath
-plotDendroAndColors(bwnet22$dendrograms[[1]], cbind(bwnet$unmergedColors, bwnet$colors),
+plotDendroAndColors(bwnet7$dendrograms[[1]], cbind(bwnet$unmergedColors, bwnet$colors),
                     c("unmerged", "merged"),
                     dendroLabels = FALSE,
                     addGuide = TRUE,
@@ -735,8 +738,8 @@ heatmap.data <- heatmap.data %>%
 names(heatmap.data)
 
 CorLevelPlot(heatmap.data,
-             x = names(heatmap.data)[5:9],
-             y = names(heatmap.data)[1:4],
+             x = names(heatmap.data)[14:18],
+             y = names(heatmap.data)[1:13],
              col = c("blue1", "skyblue", "white", "pink", "red"))
 
 # CorLevelPlot(heatmap.data,
